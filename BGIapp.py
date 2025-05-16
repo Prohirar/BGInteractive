@@ -6,7 +6,6 @@ import google.generativeai as genai
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain ## replaced load_qa_chain
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 from pathlib import Path
@@ -37,7 +36,7 @@ def get_conversational_chain():
     
    Information to read this book.This book has 18 chapters. Each chapter has heading title where each title has number of "TEXT" messages in sanskrit and its english transliteration. Each TEXT contains "SYNONYMS" , "TRANSLATION" ,and "PURPORT".Each SYNONYMS explains meaning of each sanskrit words in a TEXT message. Each TRANSLATION provides english translation of TEXT message. Each PURPORT explains meaning of the TEXT message. 
 
-   Always show full titles against chapters while answering questions related to a particular chapter.        
+   Always show full titles against chapters while answering questions related to a particular chapter. 
 	  
    If the context is irrelevant to the answer, you may ignore it \n\n
 
@@ -89,12 +88,11 @@ def main():
     #current_datetime = datetime.datetime.now()
     #print(current_datetime)
     user_question = st.text_input("Explore the BG Gen Z way... Ask me !")
-
     if user_question:
         user_input(user_question)
 
     with st.sidebar:
-      
+        st.html("<marquee>The project's purpose is to provide an opportunity for Gen Z, the new generation to explore Bhagavad Gita in a trendy way with Generative AI</marquee>")
         st.image("img/Hi.jpg") #AF link
         st.write("---")
 	
